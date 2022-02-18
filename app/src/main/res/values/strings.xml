@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">SquareExam</string>
+    <string name="app_name">Square</string>
+    <string name="stars">Stars:</string>
+    <string name="description">Description</string>
+    <string name="add_to_bookmark">Add To Bookmark</string>
+    <string name="remove_from_bookmark">Remove From Bookmark</string>
+    <string name="error">Error Message</string>
+    <string name="unexpected">Unexpected Error</string>
+    <string name="ok">OK</string>
 </resources>
