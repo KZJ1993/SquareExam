@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".module.details.DetailsActivity">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.example.square.model.relation.ReposWithBookmark" />
+
+        <variable
+            name="vm"
+            type="com.example.square.module.details.DetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:src="@drawable/ic_bookmark"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_repo_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.repos.name}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/img_bookmark"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Repo Name" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_repo_stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_repo_stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{data.repos.stars}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/img_repo_stars"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name"
+            tools:text="50" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_repo_forks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_fork"
+            app:layout_constraintStart_toEndOf="@id/txt_repo_stars"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_repo_forks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{data.repos.fork}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/img_repo_forks"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name"
+            tools:text="50" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/img_repo_watcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_eye"
+            app:layout_constraintStart_toEndOf="@id/txt_repo_forks"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_repo_watcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{data.repos.watcher}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/img_repo_watcher"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_name"
+            tools:text="50" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_repo_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/description"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="@{data.repos.isDescriptionNull() ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_repo_stars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_repo_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{data.repos.description}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:visibility="@{data.repos.isDescriptionNull() ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/label_repo_description"
+            tools:text="Repo Description" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:background="@color/black"
+            android:onClickListener="@{() -> vm.updateRepos(data)}"
+            android:padding="8dp"
+            android:text="@string/add_to_bookmark"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_repo_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
